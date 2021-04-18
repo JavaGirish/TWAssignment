@@ -1,0 +1,19 @@
+{
+	"users": [
+	  	{
+			"name": "Tony Stark",
+			"job": "Iron Man"
+		},
+
+		{
+			"name": "Sam Wilson",
+			"job": "The Falcon"
+		},
+
+		{
+			"name": "Baron Zemo",
+			"job": "Hail Hydra"
+		}
+
+	]
+}

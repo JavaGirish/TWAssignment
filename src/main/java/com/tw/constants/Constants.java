@@ -8,10 +8,7 @@ public final class Constants {
 
 	}
 
-//	// Setting BaseURI and Path
-//	public static final String BASE_URI = "https://reqres.in";
-//	public static final String BASE_PATH = "/api";
-//	
+
 
 	// API Endpoints
 	public static final String REGISTRATION_ENDPOINT = "/register";
@@ -44,8 +41,10 @@ public final class Constants {
 	
 	
 	public static final String CONFIG_FILE_PATH= System.getProperty("user.dir") + File.separator + "src/test/resources/config/config.properties";
+	public static final String TEST_DATA_JSON_PATH= System.getProperty("user.dir") + File.separator+ "src/test/resources/testData/usersData.json";
 	
-	
+	public static final String AVAILABLE_RESPONSE_SCHEMA= System.getProperty("user.dir") + File.separator + "src/test/resources/responsePayloads/availableListUsers.json";
+	public static final String UNAVAILABLE_REPONSE_SCHEMA= System.getProperty("user.dir") + File.separator + "src/test/resources/responsePayloads/unAvailableListUsers.json";
 	
 	
 

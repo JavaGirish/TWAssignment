@@ -1,4 +1,4 @@
-package testData;
+package com.tw.model;
 
 import com.tw.constants.Constants;
 import com.tw.model.UserPojoModel;
@@ -9,7 +9,7 @@ public final class DataObject {
 
 	private static UserPojoModel pojo;
 
-	public static synchronized Object getPojo(String testCondition) {
+	public static synchronized UserPojoModel getPojo(String testCondition) {
 
 	pojo = new UserPojoModel();
 
@@ -54,6 +54,19 @@ public final class DataObject {
 
 		return pojo;
 
+	}
+	
+	
+	
+	public static synchronized UserPojoModel createUsersPojo(String userName, String job) {
+		pojo = new UserPojoModel();
+		
+		pojo.setName(userName);
+		pojo.setJob(job);
+		
+		return pojo;
+		
+		
 	}
 
 

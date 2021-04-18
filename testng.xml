@@ -2,11 +2,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="TW ReqRes API Suite">
 
-  <test thread-count="2" name="Complete Suite" parallel="classes">
+  <test thread-count="2" name="ReqRes API Tests" parallel="classes">
     <classes>
-      <class name="com.tw.tests.TC_001_User_Registration_Test"/>
-      <class name="com.tw.tests.TC_002_User_Login_Test"/>
-       <class name="com.tw.tests.TC_003_Create_User_Test"/>
+      <class name="com.tw.tests.TC_01_User_Registration_Test"/>
+      <class name="com.tw.tests.TC_02_User_Login_Test"/>
+       <class name="com.tw.tests.TC_03_Create_User_Test"/>
+       <class name = "com.tw.tests.TC_04_Delete_Users_Test" />
+       <class name = "com.tw.tests.TC_05_Get_ListUsers_Test" />
     </classes>
   </test>
 

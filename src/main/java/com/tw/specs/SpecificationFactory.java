@@ -2,6 +2,10 @@ package com.tw.specs;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+
+import java.io.File;
+import java.util.Objects;
 
 import org.hamcrest.Matchers;
 
@@ -9,6 +13,7 @@ import com.tw.constants.Constants;
 import com.tw.utils.PropertyFileReader;
 
 import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.specification.ResponseSpecification;
 
 public final class SpecificationFactory  {
@@ -31,7 +36,7 @@ public final class SpecificationFactory  {
 	}
 
 	
-	/* Common ResponseSpecification method to validate appropriate error message is being displayed in response body 
+	/* ResponseSpecification method to validate appropriate error message is being displayed in response body 
 	 * if an invalid data is passed in request body during POST method.
 	 * @param: error message (To be checked in POST response body)
 	 * 
@@ -104,6 +109,40 @@ public final class SpecificationFactory  {
 					
 		return responseSpec.build();
 		
+	}
+	
+	
+	public static synchronized ResponseSpecification listUsersSpec(String actualPageNo) {
+		responseSpec = new ResponseSpecBuilder();
+		
+		responseSpec.expectStatusCode(Constants.HTTP_OK_STATUS)
+					.expectHeader("Content-Type", Constants.CONTENT_TYPE_JSON)
+					.expectBody("page", equalTo(Integer.parseInt(actualPageNo)))
+					.expectBody("total", equalTo(Integer.parseInt(PropertyFileReader.get("list_users_total"))));
+				
+		return responseSpec.build();
+		
+	}
+	
+
+	public static synchronized ResponseSpecification checkDataSizeSpec(String actualPageNo) {
+
+		responseSpec = new ResponseSpecBuilder();
+		if((Integer.parseInt(actualPageNo)) <= 2)
+		{
+			return new ResponseSpecBuilder()
+						.expectBody("data.size", equalTo(Integer.parseInt(PropertyFileReader.get("list_users_per_page"))))
+						.expectBody(JsonSchemaValidator.matchesJsonSchema(new File(Constants.AVAILABLE_RESPONSE_SCHEMA)))
+						.build();
+		}
+		
+		else {
+			
+			return new ResponseSpecBuilder()
+					.expectBody("data.size", equalTo(0))
+					.expectBody(JsonSchemaValidator.matchesJsonSchema(new File(Constants.UNAVAILABLE_REPONSE_SCHEMA)))
+					.build();
+		}
 	}
 
 	

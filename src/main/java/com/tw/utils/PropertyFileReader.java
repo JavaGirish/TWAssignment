@@ -37,8 +37,9 @@ public final class PropertyFileReader {
 		if (Objects.isNull(key) || Objects.isNull(configMap.get(key.toLowerCase()))) {
 			try {
 				throw new Exception("Property name " + key + " is not found. Please check config.properties");
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
+			} 
+			
+			catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
