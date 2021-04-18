@@ -1,7 +1,6 @@
 package com.tw.utils;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +12,7 @@ import com.tw.constants.Constants;
 public final class PropertyFileReader {
 	
 	private static Properties property = new Properties();
-	private static final Map<String, String> CONFIGMAP = new HashMap<String, String>();
+	private static final Map<String, String> configMap = new HashMap<String, String>();
 
 	
 	private PropertyFileReader() {}
@@ -24,7 +23,7 @@ public final class PropertyFileReader {
 			FileInputStream file = new FileInputStream(Constants.CONFIG_FILE_PATH);
 			property.load(file);
 			for (Map.Entry<Object, Object> entry : property.entrySet()) {
-				CONFIGMAP.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue()).trim()); 
+				configMap.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue()).trim()); 
 			}
 			
 			
@@ -35,7 +34,7 @@ public final class PropertyFileReader {
 	}
 
 	public static String get(String key)  {
-		if (Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key.toLowerCase()))) {
+		if (Objects.isNull(key) || Objects.isNull(configMap.get(key.toLowerCase()))) {
 			try {
 				throw new Exception("Property name " + key + " is not found. Please check config.properties");
 			} catch (Exception e) {
@@ -43,7 +42,7 @@ public final class PropertyFileReader {
 				e.printStackTrace();
 			}
 		}
-		return CONFIGMAP.get(key.toLowerCase());
+		return configMap.get(key.toLowerCase());
 	}
 
 }

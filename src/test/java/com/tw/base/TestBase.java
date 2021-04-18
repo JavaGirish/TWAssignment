@@ -1,9 +1,8 @@
 package com.tw.base;
 
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
-import com.tw.constants.Constants;
 import com.tw.utils.PropertyFileReader;
 
 import io.restassured.RestAssured;
@@ -11,16 +10,16 @@ import io.restassured.RestAssured;
 public class TestBase {
 	
 	
-	@BeforeClass
+	@BeforeMethod
 	protected void setUp() {
 		RestAssured.baseURI = PropertyFileReader.get("baseuri");
-		RestAssured.basePath = Constants.BASE_PATH;
+		RestAssured.basePath = PropertyFileReader.get("basepath");
 			
 	}
 	
 	
 	
-	@AfterClass
+	@AfterMethod
 	protected void tearDown() {
 		RestAssured.reset();
 	}

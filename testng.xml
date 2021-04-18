@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TW ReqRes API Suite">
+
+  <test thread-count="2" name="Complete Suite" parallel="classes">
+    <classes>
+      <class name="com.tw.tests.TC_001_User_Registration_Test"/>
+      <class name="com.tw.tests.TC_002_User_Login_Test"/>
+       <class name="com.tw.tests.TC_003_Create_User_Test"/>
+    </classes>
+  </test>
+
+</suite> 

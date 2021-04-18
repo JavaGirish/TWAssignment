@@ -1,4 +1,4 @@
-package com.tw.requests;
+package com.tw.factory;
 
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.*;
@@ -35,7 +35,7 @@ public class RequestFactory {
 	}
 	
 	
-	public static Response deleteResourceById(String apiEndpoint, int userId) {
+	public static Response deleteResourceById(String apiEndpoint, String userId) {
 		return given()
 				.pathParam("id", userId)
 				.when()

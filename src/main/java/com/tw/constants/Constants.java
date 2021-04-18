@@ -8,10 +8,10 @@ public final class Constants {
 
 	}
 
-	// Setting BaseURI and Path
-	public static final String BASE_URI = "https://reqres.in";
-	public static final String BASE_PATH = "/api";
-	
+//	// Setting BaseURI and Path
+//	public static final String BASE_URI = "https://reqres.in";
+//	public static final String BASE_PATH = "/api";
+//	
 
 	// API Endpoints
 	public static final String REGISTRATION_ENDPOINT = "/register";
@@ -28,7 +28,7 @@ public final class Constants {
 	public static final int HTTP_FORBIDDEN= 403;
 	public static final int HTTP_PAGE_NOT_FOUND= 404;
 	
-	
+	public static final String CONTENT_TYPE_JSON= "application/json; charset=utf-8";
 	
 	public static final String USER_EMAIL= "eve.holt@reqres.in";
 	public static final String USER_PASSWORD = "pistol";
@@ -40,8 +40,10 @@ public final class Constants {
 	public static final String MSG_INVALID_EMAIL_REGISTER = "Note: Only defined users succeed registration";
 	public static final String MSG_INVALID_EMAIL_LOGIN = "user not found";
 	
+	public static final String BLANK_STRING_VALUE= "";
 	
-	public static final String CONFIG_FILE_PATH= System.getProperty("user.dir") + File.separator + "src/test/resources/config.properties";
+	
+	public static final String CONFIG_FILE_PATH= System.getProperty("user.dir") + File.separator + "src/test/resources/config/config.properties";
 	
 	
 	
