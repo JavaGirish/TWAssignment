@@ -15,16 +15,16 @@ Manual Test Cases for Login endpoint is available in project under root path (Fi
 
 1. src/main/java 
 
-		   com.tw.constants: Constants to be across in framework
+         com.tw.constants: Constants to be across in framework
          com.tw.model: PojoModel and DataObject are available here
          com.tw.specs: ResponseSpecification methods to validate responses
          com.tw.utils: Utilities and helpers methods
          
  2. src/test/java
  
-			com.tw.base: TestBase class
-			com.tw.factory: Factory method to build requests
-			com.tw.tests: Test cases are added here
+		com.tw.base: TestBase class
+		com.tw.factory: Factory method to build requests
+		com.tw.tests: Test cases are added here
 			
 3. src/test/resources
 
@@ -34,12 +34,12 @@ Manual Test Cases for Login endpoint is available in project under root path (Fi
 			allure.properties: config for Allure reports
 	
 ### Command line execution can be done using Maven
-Command line execution for full suite can be done via Maven, please ensure that you have installed maven in your machine
-    Use mvn test or mvn clean install
+Command line execution for full suite can be done via Maven, please ensure that you have installed maven in your machine <br>
+Use mvn test or mvn clean install
 
 ### Test Reports
-Test Run Reports will be generated via Allure Reports, please ensure that you have installed Allure Reports in your machine, 
+Test Run Reports will be generated via Allure Reports, please ensure that you have installed Allure Reports in your machine. <br>
 If you need to install Allure in your machine, please visit: [Get Started-Allure](https://docs.qameta.io/allure/#_get_started) 
 
-Post every test run, allure-results folder will be generated in target folder
+Post every test run, allure-results folder will be generated in target folder <br>
 To generate allure reports, execute command: allure serve target/allure-results from project directory
