@@ -1,7 +1,7 @@
-## H2 RestAssured Framework for THOUGHTWORKS
+## RestAssured Framework for THOUGHTWORKS
 
 
-### H3 Framework designed for testing below API endpoints of Reqres website (https://reqres.in/)
+### Framework designed for testing below API endpoints of Reqres website (https://reqres.in/)
 - Register Successful
 - Login Successful
 - Create User
@@ -11,7 +11,7 @@
 
 Manual Test Cases for Login endpoint is available in project under root path (File Name: Login_Endpoint_Manual_TC.xlsx)
 
-### H3 Project package Details:
+### Project package Details:
 
 1. src/main/java 
 
@@ -33,11 +33,11 @@ Manual Test Cases for Login endpoint is available in project under root path (Fi
 			testData: JSON Data files to be used for data driving scripts
 			allure.properties: config for Allure reports
 	
-### H3: Command line execution can be done using Maven
+### Command line execution can be done using Maven
 Command line execution for full suite can be done via Maven, please ensure that you have installed maven in your machine
     Use mvn test or mvn clean install
 
-### H3: Test Reports
+### Test Reports
 Test Run Reports will be generated via Allure Reports, please ensure that you have installed Allure Reports in your machine, 
 If you need to install Allure in your machine, please visit: [Get Started-Allure](https://docs.qameta.io/allure/#_get_started) 
 
