@@ -1,7 +1,7 @@
 ## RestAssured Framework for THOUGHTWORKS
 
 
-### Framework designed for testing below API endpoints of Reqres website (https://reqres.in/)
+### Framework designed for testing below API endpoints of reqres website (https://reqres.in/)
 - Register Successful
 - Login Successful
 - Create User
@@ -22,9 +22,9 @@ Manual Test Cases for Login endpoint is available in project under root path (Fi
          
  2. src/test/java
  
-		com.tw.base: TestBase class
-		com.tw.factory: Factory method to build requests
-		com.tw.tests: Test cases are added here
+			com.tw.base: TestBase class
+			com.tw.factory: Factory method to build requests
+			com.tw.tests: Test cases are added here
 			
 3. src/test/resources
 
@@ -37,9 +37,10 @@ Manual Test Cases for Login endpoint is available in project under root path (Fi
 Command line execution for full suite can be done via Maven, please ensure that you have installed maven in your machine <br>
 Use mvn test or mvn clean install
 
-### Test Reports
+### Test Reports using Allure
 Test Run Reports will be generated via Allure Reports, please ensure that you have installed Allure Reports in your machine. <br>
 If you need to install Allure in your machine, please visit: [Get Started-Allure](https://docs.qameta.io/allure/#_get_started) 
 
+### Generate Test Reports
 Post every test run, allure-results folder will be generated in target folder <br>
 To generate allure reports, execute command: allure serve target/allure-results from project directory
