@@ -6,7 +6,6 @@ import com.tw.base.TestBase;
 import com.tw.constants.Constants;
 import com.tw.factory.RequestFactory;
 import com.tw.specs.DeleteResponseSpecification;
-import com.tw.specs.SpecificationFactory;
 import com.tw.utils.PropertyFileReader;
 
 import io.qameta.allure.Description;
@@ -15,7 +14,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 
-@Feature("Feature: ReqRes Delete Users API")
+@Feature("Feature 04: ReqRes Delete Users API")
 public final class TC_04_Delete_Users_Test extends TestBase {
 	
 	private TC_04_Delete_Users_Test() {}
@@ -28,6 +27,7 @@ public final class TC_04_Delete_Users_Test extends TestBase {
 		
 		RequestFactory.deleteResourceById(Constants.USERS_ENDPOINT, PropertyFileReader.get("delete_user_id"))
 					  .then()
+					  .spec(DeleteResponseSpecification.checkHttpStatusCodeSpec(Constants.HTTP_NO_CONTENT_STATUS))
 					  .spec(DeleteResponseSpecification.successfulUserDeletionSpec());
 		
 	}

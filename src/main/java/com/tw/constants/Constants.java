@@ -26,6 +26,7 @@ public final class Constants {
 	public static final int HTTP_PAGE_NOT_FOUND= 404;
 	
 	public static final String CONTENT_TYPE_JSON= "application/json; charset=utf-8";
+	public static final String BLANK_CONTENT_LENGTH= "0";
 	
 	public static final String USER_EMAIL= "eve.holt@reqres.in";
 	public static final String USER_PASSWORD = "pistol";

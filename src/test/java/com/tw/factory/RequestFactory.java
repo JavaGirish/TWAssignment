@@ -26,19 +26,6 @@ public class RequestFactory {
 	}
 	
 	
-	/* Factory method to perform GET request using only api endpoint
-	 * @param: apiEndpoint
-	 * @return: Response
-	 * */
-	@Step("Performing an GET request on API endpoint: {0}")
-	public static Response getAllResources(String apiEndpoint) {
-		return given()
-				.spec(LoggingSpecification.getPayloadInfo())
-				.when()
-				.get(apiEndpoint + "/{pageNumber}");
-		
-	}
-	
 	
 	/* Factory method to perform GET request fpr users using api endpoint and pageNumber
 	 * @param: apiEndpoint, pageNumber
@@ -53,6 +40,7 @@ public class RequestFactory {
 				.get(apiEndpoint);
 		
 	}
+	
 	
 	/* Factory method to perform DELETE request using an specific ID
 	 * @param: apiEndpoint, userId

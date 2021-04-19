@@ -14,7 +14,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 
-@Feature("Feature: ListUsers API")
+@Feature("Feature 05: ReqRes ListUsers API")
 public class TC_05_Get_ListUsers_Test extends TestBase {
 
 	private TC_05_Get_ListUsers_Test() {}
@@ -27,6 +27,8 @@ public class TC_05_Get_ListUsers_Test extends TestBase {
 		
 		RequestFactory.getAllUsers(Constants.USERS_ENDPOINT, PropertyFileReader.get("list_users_page"))
 		.then()
+		.spec(GetResponseSpecification.checkHttpStatusCodeSpec(Constants.HTTP_OK_STATUS))
+		.spec(GetResponseSpecification.checkContentTypeSpec(Constants.CONTENT_TYPE_JSON))
 		.spec(GetResponseSpecification.listUsersSpec(PropertyFileReader.get("list_users_page")))
 		.spec(GetResponseSpecification.checkDataSizeSpec(PropertyFileReader.get("list_users_page")));
 		
@@ -39,6 +41,8 @@ public class TC_05_Get_ListUsers_Test extends TestBase {
 	public void checkListApiUsersBeyondPageLimit() {
 		RequestFactory.getAllUsers(Constants.USERS_ENDPOINT, PropertyFileReader.get("list_users_page_no"))
 		.then()
+		.spec(GetResponseSpecification.checkHttpStatusCodeSpec(Constants.HTTP_OK_STATUS))
+		.spec(GetResponseSpecification.checkContentTypeSpec(Constants.CONTENT_TYPE_JSON))
 		.spec(GetResponseSpecification.listUsersSpec(PropertyFileReader.get("list_users_page_no")))
 		.spec(GetResponseSpecification.checkDataSizeSpec(PropertyFileReader.get("list_users_page_no")));
 		

@@ -7,7 +7,6 @@ import com.tw.constants.Constants;
 import com.tw.factory.RequestFactory;
 import com.tw.model.DataObject;
 import com.tw.specs.PostResponseSpecification;
-import com.tw.specs.SpecificationFactory;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
@@ -16,7 +15,7 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 
 
-@Feature("Feature: ReqRes UserRegistration API")
+@Feature("Feature 01: ReqRes UserRegistration API")
 public final class TC_01_User_Registration_Test extends TestBase {
 
 	private TC_01_User_Registration_Test() {
@@ -32,6 +31,8 @@ public final class TC_01_User_Registration_Test extends TestBase {
 		RequestFactory
 				.doPostRequest(Constants.REGISTRATION_ENDPOINT, DataObject.getPojo("REGISTER_VALID_DATA"))
 				.then()
+				.spec(PostResponseSpecification.checkHttpStatusCodeSpec(Constants.HTTP_OK_STATUS))
+				.spec(PostResponseSpecification.checkContentTypeSpec(Constants.CONTENT_TYPE_JSON))
 				.spec(PostResponseSpecification.validUserRegistrationSpec());
 
 	}
@@ -45,6 +46,8 @@ public final class TC_01_User_Registration_Test extends TestBase {
 
 		RequestFactory.doPostRequest(Constants.REGISTRATION_ENDPOINT, DataObject.getPojo("BLANK_EMAIL"))
 		.then()
+		.spec(PostResponseSpecification.checkHttpStatusCodeSpec(Constants.HTTP_BAD_REQUEST))
+		.spec(PostResponseSpecification.checkContentTypeSpec(Constants.CONTENT_TYPE_JSON))
 		.spec(PostResponseSpecification.invalidPostBodySpec(Constants.MSG_BLANK_EMAIL));
 
 	}
@@ -57,6 +60,8 @@ public final class TC_01_User_Registration_Test extends TestBase {
 
 		RequestFactory.doPostRequest(Constants.REGISTRATION_ENDPOINT, DataObject.getPojo("INVALID_EMAIL"))
 		.then()
+		.spec(PostResponseSpecification.checkHttpStatusCodeSpec(Constants.HTTP_BAD_REQUEST))
+		.spec(PostResponseSpecification.checkContentTypeSpec(Constants.CONTENT_TYPE_JSON))
 		.spec(PostResponseSpecification.invalidPostBodySpec(Constants.MSG_INVALID_EMAIL_REGISTER));
 
 	}
@@ -69,6 +74,8 @@ public final class TC_01_User_Registration_Test extends TestBase {
 
 		RequestFactory.doPostRequest(Constants.REGISTRATION_ENDPOINT, DataObject.getPojo("BLANK_PASSWORD"))
 		.then()
+		.spec(PostResponseSpecification.checkHttpStatusCodeSpec(Constants.HTTP_BAD_REQUEST))
+		.spec(PostResponseSpecification.checkContentTypeSpec(Constants.CONTENT_TYPE_JSON))
 		.spec(PostResponseSpecification.invalidPostBodySpec(Constants.MSG_BLANK_PASSWORD));
 
 	}

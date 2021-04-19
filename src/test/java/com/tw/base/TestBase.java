@@ -19,7 +19,7 @@ public class TestBase {
 	}
 	
 	
-	@Step("Clean up resources post request has been completed")
+	@Step("Clean up resources after an request has been completed")
 	@AfterMethod
 	protected void tearDown() {
 		RestAssured.reset();

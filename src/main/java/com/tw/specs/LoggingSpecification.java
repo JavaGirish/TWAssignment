@@ -7,7 +7,7 @@ import io.restassured.specification.RequestSpecification;
 public final class LoggingSpecification {
 	
 	
-	/* RequestSpecification method to log payload info in Allure Reports
+	/* RequestSpecification method to log Payload information in Allure Reports
 	 * 
 	 * @return: RequestSpecification
 	 * */

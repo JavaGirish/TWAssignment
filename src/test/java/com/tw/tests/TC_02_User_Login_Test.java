@@ -7,7 +7,6 @@ import com.tw.constants.Constants;
 import com.tw.factory.RequestFactory;
 import com.tw.model.DataObject;
 import com.tw.specs.PostResponseSpecification;
-import com.tw.specs.SpecificationFactory;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
@@ -15,7 +14,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 
-@Feature("Feature: ReqRes UserLogin API")
+@Feature("Feature 02: ReqRes UserLogin API")
 public final class TC_02_User_Login_Test extends TestBase{
 	
 	private TC_02_User_Login_Test() {}
@@ -28,6 +27,8 @@ public final class TC_02_User_Login_Test extends TestBase{
 	public void checkLoginWithValidData() {
 		RequestFactory.doPostRequest(Constants.LOGIN_ENDPOINT, DataObject.getPojo("LOGIN_VALID_DATA"))
 		 			  .then()
+		 			  .spec(PostResponseSpecification.checkHttpStatusCodeSpec(Constants.HTTP_OK_STATUS))
+		 			  .spec(PostResponseSpecification.checkContentTypeSpec(Constants.CONTENT_TYPE_JSON))
 		              .spec(PostResponseSpecification.validUserLoginSpec());
 		
 	}
@@ -40,6 +41,8 @@ public final class TC_02_User_Login_Test extends TestBase{
 	public void checkLoginApiWithBlankEmail() {
 		RequestFactory.doPostRequest(Constants.LOGIN_ENDPOINT, DataObject.getPojo("BLANK_EMAIL"))
 					 .then()
+					 .spec(PostResponseSpecification.checkHttpStatusCodeSpec(Constants.HTTP_BAD_REQUEST))
+					 .spec(PostResponseSpecification.checkContentTypeSpec(Constants.CONTENT_TYPE_JSON))
 					  .spec(PostResponseSpecification.invalidPostBodySpec(Constants.MSG_BLANK_EMAIL));
 		
 	}
@@ -52,6 +55,8 @@ public final class TC_02_User_Login_Test extends TestBase{
 	public void checkLoginApiWithInvalidEmail() {
 		RequestFactory.doPostRequest(Constants.LOGIN_ENDPOINT, DataObject.getPojo("INVALID_EMAIL"))
 					  .then()
+					  .spec(PostResponseSpecification.checkHttpStatusCodeSpec(Constants.HTTP_BAD_REQUEST))
+					  .spec(PostResponseSpecification.checkContentTypeSpec(Constants.CONTENT_TYPE_JSON))
 		              .spec(PostResponseSpecification.invalidPostBodySpec(Constants.MSG_INVALID_EMAIL_LOGIN));
 		
 	}
@@ -64,6 +69,8 @@ public final class TC_02_User_Login_Test extends TestBase{
 		
 		RequestFactory.doPostRequest(Constants.LOGIN_ENDPOINT, DataObject.getPojo("BLANK_PASSWORD"))
 					  .then()
+					  .spec(PostResponseSpecification.checkHttpStatusCodeSpec(Constants.HTTP_BAD_REQUEST))
+					  .spec(PostResponseSpecification.checkContentTypeSpec(Constants.CONTENT_TYPE_JSON))
 					  .spec(PostResponseSpecification.invalidPostBodySpec(Constants.MSG_BLANK_PASSWORD));
 		
 	}

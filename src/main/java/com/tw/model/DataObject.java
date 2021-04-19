@@ -1,5 +1,7 @@
 package com.tw.model;
 
+import java.util.Objects;
+
 import com.tw.constants.Constants;
 import com.tw.model.UserPojoModel;
 import com.tw.utils.GenerateFakeData;
@@ -25,6 +27,10 @@ public final class DataObject {
 			pojo.setEmail(Constants.BLANK_STRING_VALUE);
 			pojo.setPassword(PropertyFileReader.get("reqres_user_password"));
 			break;
+			
+		case "MISSING_EMAIL":
+			pojo.setPassword(PropertyFileReader.get("reqres_user_password"));
+			break;
 
 		case "INVALID_EMAIL":
 			pojo.setEmail(GenerateFakeData.getEmailAddress());
@@ -34,6 +40,10 @@ public final class DataObject {
 		case "BLANK_PASSWORD":
 			pojo.setEmail(PropertyFileReader.get("reqres_user_email"));
 			pojo.setPassword(Constants.BLANK_STRING_VALUE);
+			break;
+			
+		case "MISSING_PASSWORD":
+			pojo.setEmail(PropertyFileReader.get("reqres_user_email"));
 			break;
 			
 		case "CREATE_USER":
@@ -60,6 +70,16 @@ public final class DataObject {
 	
 	public static synchronized UserPojoModel createUsersPojo(String userName, String job) {
 		pojo = new UserPojoModel();
+		
+		if(Objects.isNull(userName) || Objects.isNull(job))
+		{
+			try {
+				throw new Exception("Blank field values has been provided!!");
+			} 
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		pojo.setName(userName);
 		pojo.setJob(job);

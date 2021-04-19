@@ -11,21 +11,7 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.specification.ResponseSpecification;
 
-public final class GetResponseSpecification {
-	
-	
-	/* Common ResponseSpecification method to verify generic fields for all GET requests
-	 * 
-	 * @return: ResponseSpecification
-	 * Validations done : Status code (200) and Content-Type
-	 * */
-	public static synchronized ResponseSpecification genericGetRequestSpecification() {
-		
-		return new ResponseSpecBuilder()
-						.expectStatusCode(Constants.HTTP_OK_STATUS)
-						.expectHeader("Content-Type", "application/json; charset=utf-8") 
-						.build();
-	}
+public final class GetResponseSpecification extends BaseSpecification {
 	
 	
 	
@@ -33,15 +19,13 @@ public final class GetResponseSpecification {
 	 * @param: actualPageNo (passed as query parameter in request)
 	 * @return: ResponseSpecification
 	 * 
-	 * Validations done: HTTP OK status code, Content Type, 
-	 *   				Response body fields: (page and total) are as per values available in config file.
+	 * Validations done: Response body fields: (page and total) are as per values available in config file.
+	 *   				
 	 * */
 	
 	public static synchronized ResponseSpecification listUsersSpec(String actualPageNo) {
 		
 		return new ResponseSpecBuilder()
-					.expectStatusCode(Constants.HTTP_OK_STATUS)
-					.expectHeader("Content-Type", Constants.CONTENT_TYPE_JSON)
 					.expectBody("page", equalTo(Integer.parseInt(actualPageNo)))
 					.expectBody("total", equalTo(Integer.parseInt(PropertyFileReader.get("list_users_total"))))
 					.build();
